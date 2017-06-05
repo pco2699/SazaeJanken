@@ -7,53 +7,51 @@ var te_str_en = ["cho", "guu", "par"];
 
 var te_num_arr = {cho: 0, guu: 1, par: 2};
 
-$(function () {
-    var comp_te_num = calcRandom();
-    var play_video_num = calcRandom();
+var comp_te_num = calcRandom();
+var play_video_num = calcRandom();
 
-    $("#guu_btn").on("click", function () {
-        play_opening(play_video_num);
+$("#guu_btn").on("click", function () {
+    play_opening(play_video_num);
 
-        $("#guu_btn").addClass("selected");
+    $("#guu_btn").addClass("selected");
 
-        $("#cho_btn").animate({'opacity':0}, 300, "swing");
-        $("#cho_btn").addClass("hided");
-
-
-        $("#par_btn").animate({'opacity':0}, 300, "swing");
-        $("#par_btn").addClass("hided");
-
-        onVideoEnded(comp_te_num, te_num_arr["guu"], play_video_num);
-    });
-
-    $("#cho_btn").on("click", function () {
-        play_opening(play_video_num);
-
-        $("#cho_btn").addClass("selected");
-
-        $("#guu_btn").animate({'opacity':0}, 300, "swing");
-        $("#guu_btn").addClass("hided");
+    $("#cho_btn").animate({'opacity': 0}, 300, "swing");
+    $("#cho_btn").addClass("hided");
 
 
-        $("#par_btn").animate({'opacity':0}, 300, "swing");
-        $("#par_btn").addClass("hided");
+    $("#par_btn").animate({'opacity': 0}, 300, "swing");
+    $("#par_btn").addClass("hided");
 
-        onVideoEnded(comp_te_num, te_num_arr["cho"], play_video_num);
-    });
+    onVideoEnded(comp_te_num, te_num_arr["guu"], play_video_num);
+});
 
-    $("#par_btn").on("click", function () {
-        play_opening(play_video_num);
+$("#cho_btn").on("click", function () {
+    play_opening(play_video_num);
 
-        $("#par_btn").addClass("selected");
+    $("#cho_btn").addClass("selected");
 
-        $("#cho_btn").animate({'opacity':0}, 300, "swing");
-        $("#cho_btn").addClass("hided");
+    $("#guu_btn").animate({'opacity': 0}, 300, "swing");
+    $("#guu_btn").addClass("hided");
 
-        $("#guu_btn").animate({'opacity':0}, 300, "swing");
-        $("#guu_btn").addClass("hided");
 
-        onVideoEnded(comp_te_num, te_num_arr["par"], play_video_num);
-    });
+    $("#par_btn").animate({'opacity': 0}, 300, "swing");
+    $("#par_btn").addClass("hided");
+
+    onVideoEnded(comp_te_num, te_num_arr["cho"], play_video_num);
+});
+
+$("#par_btn").on("click", function () {
+    play_opening(play_video_num);
+
+    $("#par_btn").addClass("selected");
+
+    $("#cho_btn").animate({'opacity': 0}, 300, "swing");
+    $("#cho_btn").addClass("hided");
+
+    $("#guu_btn").animate({'opacity': 0}, 300, "swing");
+    $("#guu_btn").addClass("hided");
+
+    onVideoEnded(comp_te_num, te_num_arr["par"], play_video_num);
 });
 
 function onVideoEnded(comp_te_num, player_te_num, play_video_num) {
@@ -227,4 +225,30 @@ FallingSazae.prototype.gravity = function () {
     if(this.move_num > $(window).height()){
         $("img#sazae_img" + this.id).hide();
     }
-}
+
+};
+
+Leap.loop(function(frame){
+    let track_flag = false;
+    if (frame.hands.length > 0  && !track_flag) {
+        for (hand of frame.hands) {
+            let extendedFingers = 0;
+            for (finger of hand.fingers) {
+                if (finger.extended) extendedFingers++;
+            }
+
+            if(extendedFingers === 0){
+                track_flag = true;
+                $("#guu_btn").click();
+            }
+            else if(extendedFingers === 5){
+                track_flag = true;
+                $("#par_btn").click();
+            }
+            else if(extendedFingers === 2){
+                track_flag = true;
+                $("#cho_btn").click();
+            }
+        }
+    }
+});
