@@ -1,0 +1,82 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+}
+header{
+    background-color: #fff;
+    border-bottom: 1px none #ccc;
+    text-align: center;
+}
+main{
+    border-bottom:1px solid #ccc;
+}
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:200px;
+}
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:100%;
+}
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #FFF;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover{
+    background: #0066CC;
+    color:#fff;
+}
+
+#janken_select {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#gu_btn {
+    background-color: #0066CC;
+}
+
+#gu_btn:hover {
+    background-color: #007be3;
+}
+
+
+
+#cho_btn {
+    background-color: red;
+}
+
+#par_btn {
+    background-color: green;
+}
+
+.janken_btn {
+    margin: 0 50px 0;
+    text-align: center;
+    border-style: none;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    transition: transform 0.2s linear;
+}
+
+.janken_btn.ticker {
+    transform: scale(1.2);
+}

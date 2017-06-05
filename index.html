@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sazae.css">
+    <title>サザエさん じゃんけん</title>
+<body>
+<div id="sazae_surprise"></div>
+<header>
+    <audio id="sazae_sound"></audio>
+    <h1>空から降る一億の <img src="img/107707e7.png"></h1>
+    <span>サザエさんに勝って10秒待つと...</span>
+</header>
+
+<main>
+    <div id="show">
+        <div id="janken_select">
+            <div id="guu_btn" class="janken_btn"><img src="img/M-j_gu02.png"></div>
+            <div id="cho_btn" class="janken_btn"><img src="img/M-j_ch02.png"></div>
+            <div id="par_btn" class="janken_btn"><img src="img/M-j_pa02.png"></div>
+        </div>
+        <div id="sazae_area">
+            <div id="sazae_yokoku">
+                <div class="sazae_item"></div>
+                <div class="sazae_item"></div>
+                <div class="sazae_item"></div>
+            </div>
+            <video muted></video>
+        </div>
+    </div>
+
+    <div id="pc">サザエさんの出した手は？</div>
+    <div id="num">じゃんけん結果</div>
+</main>
+
+<script src="js/index.js"></script>
+</body>
+</html>
